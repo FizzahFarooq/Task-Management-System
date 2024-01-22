@@ -1,0 +1,49 @@
+alltasks = [
+    {"task_title": "English assignment", "task_details": "Complete by Friday", "task_status": "incomplete"},
+    {"task_title": "ICT assignment", "task_details": "Submit online", "task_status": "incomplete"},
+    {"task_title": "Discrete Assignment", "task_details": "Read chapter 3", "task_status": "incomplete"}
+]
+while True:
+    print("Select any task:")
+    print("1. Add task")
+    print("2. Mark task as complete or incomplete")
+    print("3. View all tasks")
+    print("4. View only the incomplete task")
+    print("5. End")
+
+    enter_task = input("Enter any above mentioned task: ")
+
+    if enter_task == "1":
+        print("You have selected Add task")
+        title = input("Enter title: ")
+        description = input("Enter description: ")
+        task = {"task_title": title, "task_details": description, "task_status": "incomplete"}
+        alltasks.append(task)
+        print("Task is added successfully!")
+
+    elif enter_task == "2":
+        print("You have selected Mark task as complete or incomplete")
+        title = input("Enter title: ")
+        statuschoice = input("Enter status (complete/incomplete): ")
+        for task in alltasks:
+            if task["task_title"] == title:
+                task["task_status"] = statuschoice
+                print("The task '{title}' has been marked as {statuschoice}")
+                break
+
+    elif enter_task == "3":
+        print("You have selected View all tasks")
+        for task in alltasks:
+            print(task)
+    elif enter_task == "4":
+        print("You have selected View only the incomplete task")
+        incomplete_tasks = [task for task in alltasks if task["task_status"] == "incomplete"]
+        for task in incomplete_tasks:
+            print(task)
+
+    elif enter_task == "5":
+        print("End")
+        break
+
+    else:
+        print("Invalid task")
